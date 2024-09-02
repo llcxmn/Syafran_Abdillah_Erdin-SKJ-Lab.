@@ -1,0 +1,17 @@
+section .data
+    num1 dw 5 // mendefinisikan variabel dengan nama num1 dengan nilai 5
+    num2 dw 10  // mendefinisikan variabel dengan nama num2 dengan nilai 10
+    result dw 0 // mendefinisikan variabel dengan nama result dengan nilai 0
+
+section .text
+    global _start // mendefinisikan entry point dari program
+
+_start: // label dari mulainya program
+    mov ax, [num1] // meng-assign nilai num1 ke register ax
+    imul ax, [num2] // mengalikan nilai di ax(5) dengan nilai num2
+    mov [result], ax // meng-assign result (50) dari ax ke variable result
+
+    ; Exit the program
+    mov eax, 1 // meng-assign variabel eax menjadi 1
+    xor ebx, ebx // mengubah dengan ebx menjadi 0 dengan operasi xor antara ebx dan ebx (1 xor 1) yang hasilnya 0 dan menyebabkan ebx = 0 atau exit status
+    int 0x80 // menginterupsi untuk memanggil system call untuk exit
